@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const squares = document.querySelectorAll('.grid div')
     const resultDisplay = document.querySelector('#result')
+
     let width = 15
     let currentShooterIndex = 202
     let currentInvaderIndex = 0
@@ -9,20 +11,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let direction = 1
     let invaderId
 
-    //deine los alieninvasores
+    /* deine los alieninvasores */
+    const resultDisplat = document - querySelectorAll('#result')
+
+    let width = 15
+    let currentShooterIndex = 202
+    let currentInvaderIndex = 0
+    let alienInvaderTakenDown = []
+    let result = 0
+    let direction = 1
+    let invaderID
+
+    /*     Denfine los invasores alienigenas */
+
     const alienInvaders = [
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
         15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
         30, 31, 32, 33, 34, 35, 36, 37, 38, 39
     ]
 
-    //dibuja los aliens invasores
+
+    /* dibuja los aliens invasores */
     alienInvaders.forEach(invader => squares[currentInvaderIndex + invader].classList.add('invader'))
 
-    //draw the shooter
+    /* draw the shooter */
     squares[currentShooterIndex].classList.add('shooter')
 
-    //mueve el jugador de izquierda a derecha y viceversa
+    /* mueve el jugador de izquierda a derecha y viceversa */
     function moveShooter(e) {
         squares[currentShooterIndex].classList.remove('shooter')
         switch (e.keyCode) {
@@ -37,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.addEventListener('keydown', moveShooter)
 
-    //mueve a los aliens invaders de la esquina superior derecha a la izquierda, que banen un div y que vallan al lado contrario
+    /* mueve a los aliens invaders de la esquina superior derecha a la izquierda, que banen un div y que vallan al lado contrario */
     function moveInvaders() {
         const leftEdge = alienInvaders[0] % width === 0
         const rightEdge = alienInvaders[alienInvaders.length - 1] % width === width - 1
@@ -55,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
             alienInvaders[i] += direction
         }
         for (let i = 0; i <= alienInvaders.length - 1; i++) {
-            //Agregar el IF después
             if (!alienInvadersTakenDown.includes(i)) {
                 squares[alienInvaders[i]].classList.add('invader')
             }
@@ -74,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        //agregar después
+        /* agregar después */
         if (alienInvadersTakenDown.length === alienInvaders.length) {
             console.log(alienInvadersTakenDown.length)
             console.log(alienInvaders.length)
@@ -84,11 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     invaderId = setInterval(moveInvaders, 500)
 
-    //disparar a los aliens
+    /* disparar a los aliens */
     function shoot(e) {
         let laserId
         let currentLaserIndex = currentShooterIndex
-            //mover el laser de el shooter a el alien
+            /* mover el laser de el shooter a el alien */
         function moveLaser() {
             squares[currentLaserIndex].classList.remove('laser')
             currentLaserIndex -= width
@@ -121,4 +135,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('keyup', shoot)
+
 })
