@@ -1,11 +1,7 @@
 .grid {
     display: flex;
     flex-wrap: wrap;
-<<<<<<< HEAD
     border: solid 1px;
-=======
-    border: solid 2px;
->>>>>>> 7778b9a156931c0b0f327d2f2eb6c9228fab8bba
     width: 300px;
     height: 300px;
 }
@@ -16,7 +12,6 @@
 }
 
 .shooter {
-<<<<<<< HEAD
     background-color: blue;
 }
 
@@ -31,19 +26,4 @@
 
 .laser {
     background-color: violet;
-=======
-    background-color: deepskyblue;
-}
-
-.invader {
-    background-color: darkviolet;
-}
-
-.boom {
-    background-color: firebrick;
-}
-
-.laser {
-    background-color: gold;
->>>>>>> 7778b9a156931c0b0f327d2f2eb6c9228fab8bba
 }
